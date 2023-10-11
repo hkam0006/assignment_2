@@ -9,6 +9,7 @@
       "feature": "ne_110m_admin_0_countries"
     }
   },
+  "params": [],
   "projection": {
     "type": "equalEarth"
   },
@@ -51,15 +52,25 @@
           "lookup": "properties.NAME",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/hkam0006/assignment_2/main/data/aqi_data_final.csv"
+              "url": "https://raw.githubusercontent.com/hkam0006/assignment_2/main/data/co2_emission_per_capita.csv"
             },
-            "key": "name",
+            "key": "Entity",
             "fields": [
-              "aqi_value",
-              "population",
-              "status"
+              "Entity",
+              "Annual CO2 emissions (per capita)",
+              "Year"
             ]
-          }
+          },
+          "as": [
+            "entity",
+            "co2_emission",
+            "year"
+          ]
+        },
+        {
+          "bin": true,
+          "field": "co2_emission",
+          "as": "binned rating"
         }
       ],
       "mark": {
@@ -68,11 +79,11 @@
       },
       "encoding": {
         "color": {
-          "field": "aqi_value",
-          "title": "Air Quality Index",
+          "field": "co2_emission",
+          "title": "CO2 Emissions per Capita (tn)",
           "type": "quantitative",
           "scale": {
-            "scheme": "reds"
+            "scheme": "blues"
           }
         },
         "tooltip": [
@@ -82,15 +93,9 @@
             "title": "Country"
           },
           {
-            "field": "status",
-            "type": "nominal",
-            "title": "AQI Class"
-          },
-          {
-            "field": "aqi_value",
+            "field": "co2_emission",
             "type": "quantitative",
-            "format": ".2f",
-            "title": "AQI Rating"
+            "title": "CO2 Emissions per Capita (tn)"
           }
         ]
       }

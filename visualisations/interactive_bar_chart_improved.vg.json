@@ -3,7 +3,7 @@
   "width": "container",
   "height": 250,
   "data": {
-    "url": "https://raw.githubusercontent.com/hkam0006/fit3179-vis/main/death_rate_10000_edited.csv"
+    "url": "https://raw.githubusercontent.com/hkam0006/assignment_2/main/data/death_rate_10000_edited.csv"
   },
   "params": [
     {
@@ -71,7 +71,8 @@
       ],
       "groupby": [
         "Entity",
-        "Continent"
+        "Continent",
+        "Code"
       ]
     },
     {
@@ -109,7 +110,7 @@
       }
     },
     "y": {
-      "field": "Entity",
+      "field": "Code",
       "type": "nominal",
       "sort": "-x",
       "title": "Countries"

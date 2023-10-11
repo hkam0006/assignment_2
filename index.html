@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Air Quality around the World</title>
+  <title>Silent Threat in the Air</title>
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
@@ -28,8 +28,10 @@
 
     <div class="pure-g">
       <div class="pure-u-1-1">
-        <h1>Air Pollution Data Visualisation</h1>
-        <p>By: Hiu Long Kam</p>
+        <h1 style="text-align: center;">Silent Threat in the Air</h1>
+        <p>Air pollution is an invisible menace that affects the lives of millions worldwide.
+           From the dense smog of urban areas to the less conspicuous pollutants in our atmosphere,
+            the air we breathe can have profound consequences on our health and the climate.</p>
       </div>
     </div>
 
@@ -62,6 +64,7 @@
         </div>
       </div>
     </div>
+
     <div class="pure-g">
       <div style="width:100%;">
         <h2 style="letter-spacing: 1px; margin-top: 5px;  margin-bottom: 5px;">Deaths attributed to Air Pollution per 10,000</h2>
@@ -83,16 +86,34 @@
         </div>
       </div>
     </div>
+
+    <div class="pure-g">
+      <div style="width:100%;">
+        <h2 style="letter-spacing: 1px; margin-top: 5px;  margin-bottom: 5px;">Air Pollution and Climate</h2>
+        <p style="letter-spacing: 0.5px;">Air pollutants not only severely impact public health, but also the
+           earth's climate and ecoysstem globally. Many sources of outdoor air pollution are also sources of
+            high CO2 emissions. For example, the use of fossil fules for power generation, industry and polluting
+             transport are all major sources of both particulate matter and CO2.</p>
+      </div>
+      <div class="pure-u-1-1 margin-auto" >
+        <div id="vis3" class="vis-container"></div>
+      </div>
+    </div>
   </div>
 
   <script type="text/javascript">
-    var map = "https://raw.githubusercontent.com/hkam0006/assignment_2/main/visualisations/map.vg.json"
-    vegaEmbed('#vis1', map, {"actions": false}).then(function(result) {
+    var aqi_map = "./visualisations/map.vg.json"
+    vegaEmbed('#vis1', aqi_map, {"actions": false}).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
-    var bar_chart = "https://raw.githubusercontent.com/hkam0006/assignment_2/main/visualisations/interactive_bar_chart_improved.vg.json";
+    var bar_chart = "./visualisations/interactive_bar_chart_improved.vg.json";
     vegaEmbed('#vis2', bar_chart, {"actions": false}).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var co2_map = "./visualisations/co2_map.vg..json"
+    vegaEmbed('#vis3', co2_map, {"actions": false}).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
   </script>
