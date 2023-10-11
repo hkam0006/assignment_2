@@ -1,0 +1,136 @@
+name,aqi_value,population,status
+Albania,17.0,2832439.0,Good
+Algeria,56.0,45606480.0,Moderate
+Andorra,15.0,80088.0,Good
+Angola,140.0,36684202.0,Unhealthy for Sensitive Groups
+Argentina,16.0,45773884.0,Good
+Armenia,28.5,2777970.0,Good
+Australia,68.5,26439111.0,Moderate
+Austria,29.5,8958960.0,Good
+Azerbaijan,45.0,10412651.0,Good
+Bahrain,109.0,1485509.0,Unhealthy for Sensitive Groups
+Bangladesh,116.5,172954319.0,Unhealthy for Sensitive Groups
+Belarus,9.0,9498238.0,Good
+Belgium,137.5,11686140.0,Unhealthy for Sensitive Groups
+Belize,21.5,410825.0,Good
+Bermuda,23.5,64069.0,Good
+Bolivia,34.5,12388571.0,Good
+Bosnia and Herzegovina,51.5,3210847.0,Moderate
+Brazil,88.5,216422446.0,Moderate
+Brunei,15.0,452524.0,Good
+Bulgaria,48.5,6687717.0,Good
+Burkina Faso,44.0,23251485.0,Good
+Cambodia,9.5,16944826.0,Good
+Canada,106.5,38781291.0,Unhealthy for Sensitive Groups
+Cape Verde,17.0,598682.0,Good
+Cayman Islands,10.0,69310.0,Good
+Chad,44.0,18278568.0,Good
+Chile,104.5,19629590.0,Unhealthy for Sensitive Groups
+China,151.5,1425671352.0,Unhealthy
+Colombia,99.0,52085168.0,Moderate
+Costa Rica,9.5,5212173.0,Good
+Croatia,26.0,4008617.0,Good
+Cyprus,46.5,1260138.0,Good
+Czech Republic,56.5,10495295.0,Moderate
+Denmark,5.5,5910913.0,Good
+Dominican Republic,14.5,11332972.0,Good
+Ecuador,70.0,18190484.0,Moderate
+Egypt,60.5,112716598.0,Moderate
+El Salvador,26.5,6364943.0,Good
+Estonia,20.5,1322765.0,Good
+Ethiopia,158.0,126527060.0,Unhealthy
+Finland,26.5,5545475.0,Good
+France,68.0,64756584.0,Moderate
+French Guiana,20.0,312155.0,Good
+Gabon,104.5,2436566.0,Unhealthy for Sensitive Groups
+Georgia,28.0,3728282.0,Good
+Germany,123.0,83294633.0,Unhealthy for Sensitive Groups
+Ghana,33.5,34121985.0,Good
+Gibraltar,54.0,32688.000000000004,Moderate
+Greece,54.0,10341277.0,Moderate
+Grenada,14.5,126183.0,Good
+Guadeloupe,15.5,395839.0,Good
+Guatemala,60.5,18092026.0,Moderate
+Honduras,21.5,10593798.0,Good
+Hong Kong,74.0,7491609.0,Moderate
+Hungary,25.0,10156239.0,Good
+Iceland,7.0,375318.0,Good
+India,161.0,1428627663.0,Unhealthy
+Indonesia,149.5,277534122.0,Unhealthy for Sensitive Groups
+Iran,158.0,89172767.0,Unhealthy
+Iraq,25.0,45504560.0,Good
+Ireland,21.5,5056935.0,Good
+Israel,63.0,9174520.0,Moderate
+Italy,62.5,58870762.0,Moderate
+Ivory Coast,29.5,28873034.0,Good
+Japan,71.5,123294513.0,Moderate
+Jersey,25.0,111802.0,Good
+Jordan,32.0,11337052.0,Good
+Kazakhstan,74.0,19606633.0,Moderate
+Kenya,55.5,55100586.0,Moderate
+Kosovo,19.0,1770003.0,Good
+Kuwait,74.5,4310108.0,Moderate
+Kyrgyzstan,120.5,6735347.0,Unhealthy for Sensitive Groups
+Laos,52.5,7633779.0,Moderate
+Latvia,10.0,1830211.0,Good
+Lebanon,21.0,5353930.0,Good
+Liberia,17.0,5418377.0,Good
+Liechtenstein,23.5,39584.0,Good
+Lithuania,29.5,2718352.0,Good
+Luxembourg,36.5,654768.0,Good
+Macau,55.0,704149.0,Moderate
+Macedonia,35.5,2085679.0,Good
+Madagascar,42.0,30325732.0,Good
+Malaysia,65.5,34308525.0,Moderate
+Malta,32.5,535064.0,Good
+Martinique,64.5,366981.0,Moderate
+Mexico,157.0,128455567.0,Unhealthy
+Moldova,6.0,3435931.0,Good
+Monaco,25.0,36297.0,Good
+Mongolia,42.0,3447157.0,Good
+Montenegro,32.0,626485.0,Good
+Myanmar,60.5,54577997.0,Moderate
+Nepal,67.5,30896590.0,Moderate
+Netherlands,240.0,17618299.0,Hazardous
+New Zealand,47.5,5228100.0,Good
+Nigeria,33.5,223804632.0,Good
+Norway,21.5,5474360.0,Good
+Pakistan,52.5,240485658.0,Moderate
+Palestinian Territory,35.5,5371230.0,Good
+Peru,84.0,34352719.0,Moderate
+Philippines,71.5,117337368.0,Moderate
+Poland,73.5,41026067.0,Moderate
+Portugal,26.5,10247605.0,Good
+Puerto Rico,3.5,3260314.0,Good
+Qatar,68.0,2716391.0,Moderate
+Reunion,17.5,981796.0,Good
+Romania,60.0,19892812.0,Moderate
+Russia,87.0,144444359.0,Moderate
+San Marino,48.0,33642.0,Good
+Serbia,47.5,7149077.0,Good
+Singapore,76.0,6014723.0,Moderate
+Slovakia,31.0,5795199.0,Good
+Slovenia,24.5,2119675.0,Good
+South Africa,165.0,60414495.0,Unhealthy
+South Korea,59.0,51784059.0,Moderate
+Spain,93.0,47519628.0,Moderate
+Sri Lanka,45.0,21893579.0,Good
+Sweden,19.0,10612086.0,Good
+Switzerland,35.5,8796669.0,Good
+Taiwan,61.5,23923276.0,Moderate
+Tajikistan,46.0,10143543.0,Good
+Thailand,93.5,71801279.0,Moderate
+Togo,191.0,9053799.0,Unhealthy
+Trinidad and Tobago,14.5,1534937.0,Good
+Turkey,93.5,85816199.0,Moderate
+Turkmenistan,77.0,6516100.0,Moderate
+Uganda,4.0,48582334.0,Good
+Ukraine,47.0,36744634.0,Good
+United Arab Emirates,118.5,9516871.0,Unhealthy for Sensitive Groups
+United Kingdom,139.0,67736802.0,Unhealthy for Sensitive Groups
+United States of America,321.5,339996563.0,Hazardous
+Uzbekistan,38.0,35163944.0,Good
+Vatican City,35.5,518.0,Good
+Venezuela,15.0,28838499.0,Good
+Vietnam,124.5,98858950.0,Unhealthy for Sensitive Groups
+Zambia,89.0,20569737.0,Moderate

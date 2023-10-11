@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Multiple Visualisations | An Example</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="./homework_4/styles.css" media="all">
+
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h1>Air Pollution Data Visualisation</h1>
+        <p>By: Hiu Long Kam</p>
+      </div>
+    </div>
+
+    <div class="pure-g">
+      <div style="width: 100%;">
+        <h2 style="letter-spacing: 1px; margin-top: 5px;  margin-bottom: 5px;">World Air Pollution</h2>
+      </div>
+      <div class="pure-u-1-1">
+        <div id="vis1" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-1">
+        <div class="description description-left">
+          <p>
+            This map data visualization presents the Air Quality Index (AQI) values 
+            for various countries around the world. The AQI is a standardized numerical 
+            system that assesses and communicates the quality of the air in a specific 
+            location, offering valuable insights into air pollution levels and potential 
+            health risks.
+          </p>
+          <p>
+            The data visualization presents a stark picture of air quality around the world, 
+            with the United States emerging as the country with the most concerning Air Quality Index (AQI) 
+            value, standing at a staggering 321.50. Following closely behind, South Africa records an AQI of 
+            165, indicating significant air pollution challenges in the region. India, a nation grappling 
+            with air quality issues, reports an AQI of 161. These figures underscore the critical need for 
+            air quality management and environmental initiatives in these countries. The data serves as a 
+            powerful call to action, highlighting the urgency of addressing air pollution and its impact on 
+            public health and the environment on a global scale.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="pure-g">
+      <div style="width:100%;">
+        <h2 style="letter-spacing: 1px; margin-top: 5px;  margin-bottom: 5px;">Deaths attributed to Air Pollution per 10,000</h2>
+      </div>
+      <div>
+        <div class="pure-u-3-5 margin-auto" >
+          <div id="vis2" class="vis-container"></div>
+        </div>
+        <div class="pure-u-2-5">
+          <div class="description description-right">
+            <p>This graph depicts a significant and encouraging trend in air pollution-related 
+              deaths per 10,000 people from the year 1990 to 2019. Over this 29-year period, we
+               observe a steady decrease in air pollution-related deaths globally.</p>
+            <p>Solomon Islands stands out as an exception, maintaining the highest number
+               of deaths attributed to air pollution per 10,000 people throughout this period.
+                In 2019, Solomon Islands recorded a distressing 432.93 deaths per 10,000 due to
+                 air pollution,</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var map = "https://raw.githubusercontent.com/hkam0006/fit3179-vis/main/homework_4/visualisations/map.vg.json"
+    vegaEmbed('#vis1', map, {"actions": false}).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var bar_chart = "https://raw.githubusercontent.com/hkam0006/fit3179-vis/main/homework_4/visualisations/interactive_bar_chart.vg.json";
+    vegaEmbed('#vis2', bar_chart, {"actions": false}).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  </script>
+</body>
+
+</html>
