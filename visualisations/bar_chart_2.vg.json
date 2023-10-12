@@ -1,0 +1,164 @@
+{
+	"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+	"description": "A bar chart with negative values. We can hide the axis domain line, and instead use a conditional grid color to draw a zero baseline.",
+	"width": "container",
+	"height": 300,
+	"data": {
+		"url": "https://raw.githubusercontent.com/hkam0006/assignment_2/main/data/global_temp.csv"
+	},
+	"encoding": {
+		"x": {
+			"field": "Year",
+			"type": "temporal"
+		}
+	},
+	"layer": [
+		{
+			"mark": {
+				"type": "bar",
+				"width": 3
+			},
+			"transform": [
+				{
+					"filter": {
+						"field": "Year",
+						"lte": {
+							"year": 2019
+						}
+					}
+				}
+			],
+			"encoding": {
+				"y": {
+					"field": "Anomaly",
+					"type": "quantitative",
+					"axis": {
+						"gridColor": {
+							"condition": {
+								"test": "datum.value === 0",
+								"value": "black"
+							},
+							"value": "#ddd"
+						}
+					}
+				},
+				"color": {
+					"field": "Category",
+					"type": "nominal",
+					"legend": null,
+					"scale": {
+						"domain": [
+							"Above",
+							"Below"
+						],
+						"range": [
+							"#e41a1c",
+							"#377eb8"
+						]
+					}
+				}
+			}
+		},
+		{
+			"params": [
+				{
+					"name": "index",
+					"select": {
+						"type": "point",
+						"encodings": [
+							"x"
+						],
+						"on": "pointermove",
+						"nearest": true
+					}
+				}
+			],
+			"mark": {
+				"type": "point"
+			},
+			"encoding": {
+				"y": {
+					"field": "Anomaly",
+					"type": "quantitative"
+				},
+				"opacity": {
+					"value": 0
+				}
+			}
+		},
+		{
+			"transform": [
+				{
+					"filter": {
+						"and": [
+							"index.Year",
+							{
+								"param": "index"
+							}
+						]
+					}
+				}
+			],
+			"mark": "rule"
+		},
+		{
+			"transform": [
+				{
+					"filter": {
+						"and": [
+							"index.Year",
+							{
+								"param": "index"
+							}
+						]
+					}
+				}
+			],
+			"mark": "text",
+			"encoding": {
+				"y": {
+					"value": 10
+				},
+				"text": {
+					"field": "Year",
+					"type": "temporal",
+					"format": "Year: %Y"
+				}
+			}
+		},
+		{
+			"transform": [
+				{
+					"filter": {
+						"and": [
+							"index.Year",
+							{
+								"param": "index"
+							}
+						]
+					}
+				}
+			],
+			"mark": "text",
+			"encoding": {
+				"y": {
+					"value": 25
+				},
+				"text": {
+					"field": "Anomaly",
+					"type": "quantitative",
+					"formatType": "quantitative",
+					"format": "%s Celcius"
+				}
+			}
+		}
+	],
+	"config": {
+		"text": {
+			"align": "right",
+			"dx": -5,
+			"dy": 10
+		},
+		"normalizedNumberFormat": "s"
+	}
+}

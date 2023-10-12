@@ -45,23 +45,38 @@
       <div class="pure-u-1-1">
         <div class="description description-left">
           <p>
-            This map data visualization presents the Air Quality Index (AQI) values 
-            for various countries around the world. The AQI is a standardized numerical 
-            system that assesses and communicates the quality of the air in a specific 
-            location, offering valuable insights into air pollution levels and potential 
-            health risks.
-          </p>
-          <p>
-            The data visualization presents a stark picture of air quality around the world, 
-            with the United States emerging as the country with the most concerning Air Quality Index (AQI) 
-            value, standing at a staggering 321.50. Following closely behind, South Africa records an AQI of 
-            165, indicating significant air pollution challenges in the region. India, a nation grappling 
-            with air quality issues, reports an AQI of 161. These figures underscore the critical need for 
-            air quality management and environmental initiatives in these countries. The data serves as a 
-            powerful call to action, highlighting the urgency of addressing air pollution and its impact on 
-            public health and the environment on a global scale.
+            This map visualizes the Air Quality Index (AQI) values for countries worldwide, providing insights 
+            into air quality and health risks. The United States, with an alarming AQI of 321.50, leads in air 
+            pollution. South Africa follows with an AQI of 165, while India reports 161. These figures emphasize 
+            the global need for air quality management and environmental efforts, underscoring the urgency to address 
+            air pollution's impact on health and the environment.
           </p>
         </div>
+      </div>
+    </div>
+
+    <div class="pure-g">
+      <div style="width:100%;">
+        <h2 style="letter-spacing: 1px; margin-top: 5px;  margin-bottom: 5px;">Deaths attributed to Air Pollution</h2>
+      </div>
+      <div class="pure-u-1-2">
+        <div class="description description-left">
+          <p>
+            Air pollution, resulting from the presence of outdoor and indoor particulate matter, along with ozone, constitutes 
+            a significant risk factor for several major causes of mortality, encompassing heart disease, stroke, lower respiratory 
+            infections, lung cancer, diabetes, and chronic obstructive pulmonary disease (COPD).
+          </p>
+          <p>
+            In 2019, air pollution contributed to 11.53% of global fatalities, establishing it as the second most prevalent cause of 
+            death, surpassed only by deaths attributed to cardiovascular diseases.
+          </p>
+          <p>
+            In 1990, global fatalities accounted for 13% of the total. Over the course of three decades, there was only a minimal 2% reduction in the fatality rate, signaling a slow pace of improvement.
+          </p>
+        </div>
+      </div>
+      <div class="pure-u-1-2" style="margin: auto;">
+        <div id="vis4" class="vis-container"></div>
       </div>
     </div>
 
@@ -99,6 +114,23 @@
         <div id="vis3" class="vis-container"></div>
       </div>
     </div>
+
+    <div class="pure-g">
+      <div style="width:100%;">
+        <h2 style="letter-spacing: 1px; margin-top: 5px;  margin-bottom: 5px;">Global Temperature</h2>
+      </div>
+      <div class="pure-u-1-1" style="margin: auto;">
+        <div id="vis5" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-1">
+        <div class="description description-left">
+          <p>
+            As a result of air pollution such as CO2 and other greenhouse gases, the global temperature relative to 1901-2000 average temperature is trending upwards.
+          </p>
+        </div>
+      </div>
+    </div>
+    
   </div>
 
   <script type="text/javascript">
@@ -114,6 +146,17 @@
 
     var co2_map = "./visualisations/co2_map.vg..json"
     vegaEmbed('#vis3', co2_map, {"actions": false}).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var pie_chart = "./visualisations/pie_chart.vg.json"
+    vegaEmbed('#vis4', pie_chart, {"actions": false}).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+
+    var temp_chart = "./visualisations/bar_chart_2.vg.json"
+    vegaEmbed('#vis5', temp_chart, {"actions": false}).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
   </script>

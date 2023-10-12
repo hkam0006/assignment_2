@@ -1,14 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 250,
+  "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/hkam0006/assignment_2/main/data/death_rate_10000_edited.csv"
   },
   "params": [
     {
       "name": "Year_filter",
-      "value": 1990,
+      "value": 2019,
       "bind": {
         "input": "range",
         "min": 1990,
@@ -19,7 +19,7 @@
     },
     {
       "name": "top_k_countries",
-      "value": 5,
+      "value": 20,
       "bind": {
         "input": "range",
         "min": 1,
@@ -135,6 +135,9 @@
           "#377eb8",
           "#a65628"
         ]
+      },
+      "legend": {
+        "orient": "bottom-right"
       }
     },
     "tooltip": [

@@ -1,0 +1,105 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple pie chart with embedded data.",
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/hkam0006/assignment_2/main/data/deaths.csv"
+  },
+  "params": [
+    {
+      "name": "Year_filter",
+      "value": 2019,
+      "bind": {
+        "input": "range",
+        "min": 1990,
+        "max": 2019,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+  "selection": {
+    "risk_selection": {
+      "type": "multi",
+      "value": "Europe",
+      "fields": [
+        "Risk of Death"
+      ],
+      "bind": "legend"
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.Year == Year_filter"
+    },
+    {
+      "window": [
+        {
+          "op": "sum",
+          "field": "Number of Deaths",
+          "as": "total_deaths"
+        }
+      ],
+      "frame": [
+        null,
+        null
+      ]
+    },
+    {
+      "calculate": "(datum['Number of Deaths'] / datum.total_deaths) * 100",
+      "as": "percentage_deaths"
+    }
+  ],
+  "mark": {
+    "type": "arc",
+    "innerRadius": 50,
+    "cornerRadius": 10,
+    "padAngle": 0.025
+  },
+  "encoding": {
+    "theta": {
+      "field": "Number of Deaths",
+      "type": "quantitative",
+      "stack": "normalize"
+    },
+    "color": {
+      "field": "Risk of Death",
+      "type": "nominal",
+      "legend": {
+        "orient": "left"
+      }
+    },
+    "opacity": {
+      "condition": {
+        "selection": "risk_selection",
+        "value": 0.8
+      },
+      "value": 0.2
+    },
+    "tooltip": [
+      {
+        "field": "Risk of Death",
+        "type": "nominal"
+      },
+      {
+        "field": "Number of Deaths",
+        "type": "quantitative",
+        "format": ".0f"
+      },
+      {
+        "field": "percentage_deaths",
+        "type": "quantitative",
+        "title": "% of Total Deaths",
+        "format": ".2f"
+      }
+    ]
+  },
+  "config": {
+    "style": {
+      "cell": {
+        "stroke": "transparent"
+      }
+    }
+  }
+}

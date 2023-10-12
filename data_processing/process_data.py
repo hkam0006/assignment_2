@@ -1,15 +1,7 @@
 import pandas as pd
 
 df = pd.read_csv('./data_processing/number-of-deaths-by-risk-factor.csv')
-
-for i, row in df.iterrows():
-    year = row['Year']
-    if year != 2019:
-        df.at[i, 'Year'] = None
-
 df.dropna(inplace=True)
-
-print(df)
 
 column_names = list(df.columns)
 
@@ -29,7 +21,7 @@ new_col_names = {
     column_names[15]: "Diet low in vegetables",
     column_names[16]: "Smoking",
     column_names[17]: "High fasting plasma glucose",
-    column_names[18]: "Air pollution",
+    column_names[18]: "Air pollution (indoor and outdoor)",
     column_names[19]: "High body-mass index",
     column_names[20]: "Unsafe sanitation",
     column_names[21]: "Drug use",
@@ -45,13 +37,91 @@ new_col_names = {
 }
 df.rename(columns=new_col_names, inplace=True)
 
-df['Total Air Pollution Deaths'] = df["Ambient particulate matter pollution"] + \
-    df["Household air pollution from solid fuels"] + df['Air pollution']
+df.drop(["Entity", "Code"], axis=1, inplace=True)
 
-df.drop(["Ambient particulate matter pollution",
-        "Household air pollution from solid fuels", 'Air pollution'], axis=1, inplace=True)
+results = df.groupby('Year', as_index=False).sum()
 
-df.rename(
-    columns={'Total Air Pollution Deaths': "Air Pollution"}, inplace=True)
+print(results)
 
-df.to_csv("/Users/sonnykam/Documents/Monash_Uni/FIT3179/assignment_2/assignment_2/data/deaths.csv", index=False)
+df_columns_names = list(df.columns)
+df_columns_names = df_columns_names[1:]
+
+rows_list = []
+
+cardio_set = set(["High Systolic Blood Pressure", "High sodium diet", "Smoking",
+                  "High fasting plasma glucose", "High body-mass index", "High ldl cholesterol"])
+
+nutri_set = set(["Low whole grains diet", "Low fruits diet", "Diet low in nuts and seeds",
+                 "Diet low in vegetables", "Low bone mineral density", "Vitamin a deficiency", "Low physical activity"])
+
+environ_set = set(["Second Hand Smoke", "Unsafe water source",
+                  "Unsafe sanitation", "No access to handwashing facility"])
+
+maternal_set = set(["Low birth weight", "Child wasting", "Unsafe sex",
+                   "Child stunting", "Non-exclusive breastfeeding", "Iron deficiency"])
+
+substance_set = set(["Alcohol use", "Drug use"])
+
+air_pollution_set = set(["Air pollution (indoor and outdoor)"])
+
+for index, row in results.iterrows():
+    year = row["Year"]
+    cardio = {
+        "Year": year,
+        "Risk of Death": "Cardiovascular",
+        "Number of Deaths": 0
+    }
+    nutri = {
+        "Year": year,
+        "Risk of Death": "Nutrition",
+        "Number of Deaths": 0
+    }
+    environmental = {
+        "Year": year,
+        "Risk of Death": "Environmental",
+        "Number of Deaths": 0
+    }
+    maternal = {
+        "Year": year,
+        "Risk of Death": "Maternal and Child Health",
+        "Number of Deaths": 0
+    }
+    substance = {
+        "Year": year,
+        "Risk of Death": "Substance Use",
+        "Number of Deaths": 0
+    }
+    air_pollution = {
+        "Year": year,
+        "Risk of Death": "Air Pollution",
+        "Number of Deaths": 0
+    }
+
+    for col_name in df_columns_names:
+        num_deaths = row[col_name]
+        if col_name in cardio_set:
+            cardio["Number of Deaths"] += num_deaths
+        elif col_name in nutri_set:
+            nutri["Number of Deaths"] += num_deaths
+        elif col_name in environ_set:
+            environmental['Number of Deaths'] += num_deaths
+        elif col_name in maternal_set:
+            maternal['Number of Deaths'] += num_deaths
+        elif col_name in substance_set:
+            substance["Number of Deaths"] += num_deaths
+        elif col_name in air_pollution_set:
+            air_pollution['Number of Deaths'] += num_deaths
+    rows_list.append(cardio)
+    rows_list.append(nutri)
+    rows_list.append(environmental)
+    rows_list.append(maternal)
+    rows_list.append(substance)
+    rows_list.append(air_pollution)
+
+
+transformed_df = pd.DataFrame(rows_list)
+
+print(transformed_df)
+
+# transformed_df.to_csv(
+# "/Users/sonnykam/Documents/Monash_Uni/FIT3179/assignment_2/assignment_2/data/deaths.csv", index=False)
