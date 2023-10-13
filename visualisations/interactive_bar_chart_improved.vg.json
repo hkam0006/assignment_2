@@ -22,8 +22,8 @@
       "value": 20,
       "bind": {
         "input": "range",
-        "min": 1,
-        "max": 50,
+        "min": 3,
+        "max": 20,
         "step": 1,
         "name": "No. Countries"
       }
@@ -110,7 +110,7 @@
       }
     },
     "y": {
-      "field": "Code",
+      "field": "Entity",
       "type": "nominal",
       "sort": "-x",
       "title": "Countries"
@@ -128,7 +128,7 @@
           "Oceania"
         ],
         "range": [
-          "#e41a1c",
+          "#21C9C5",
           "#984ea3",
           "#ff7f00",
           "#a6cee3",
@@ -137,7 +137,10 @@
         ]
       },
       "legend": {
-        "orient": "bottom-right"
+        "orient": "bottom-right",
+        "fillColor": "lightgray",
+        "padding": 10,
+        "cornerRadius": 5
       }
     },
     "tooltip": [

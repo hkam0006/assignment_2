@@ -11,6 +11,10 @@ body {
   background-color: black;
 }
 
+label {
+  margin: auto;
+}
+
 .page {
   width: 850px;
   background-color: lightgray;

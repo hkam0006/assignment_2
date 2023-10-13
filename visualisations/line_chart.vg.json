@@ -1,0 +1,92 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Multi-series line chart with labels and interactive highlight on hover.  We also set the selection's initial value to provide a better screenshot",
+    "data": {
+        "url": "https://raw.githubusercontent.com/hkam0006/assignment_2/main/data/natural_disaster.csv"
+    },
+    "width": "container",
+    "height": 300,
+    "transform": [
+        {
+            "filter": "datum.Year >= 1950"
+        }
+    ],
+    "selection": {
+        "disaster_selection": {
+            "init": [
+                "Flood",
+                "Storm"
+            ],
+            "type": "multi",
+            "fields": [
+                "Disaster"
+            ],
+            "bind": "legend",
+            "on": "hover"
+        }
+    },
+    "transform": [
+        {
+            "filter": "datum['Disaster'] != 'Total'"
+        }
+    ],
+    "mark": {
+        "type": "line"
+    },
+    "encoding": {
+        "x": {
+            "field": "Year",
+            "type": "temporal",
+            "title": "Year"
+        },
+        "y": {
+            "field": "Occurences",
+            "type": "quantitative",
+            "title": "Frequency"
+        },
+        "color": {
+            "field": "Disaster",
+            "title": "Disaster Type",
+            "type": "nominal",
+            "legend": {
+                "orient": "top-left",
+                "fillColor": "lightgray",
+                "padding": 10,
+                "cornerRadius": 5
+            },
+            "scale": {
+                "domain": [
+                    "Flood",
+                    "Storm",
+                    "Earthquake",
+                    "Extreme temperature",
+                    "Drought",
+                    "Wildfire",
+                    "Volcanic activity"
+                ]
+            }
+        },
+        "opacity": {
+            "condition": {
+                "selection": "disaster_selection",
+                "value": 1
+            },
+            "value": 0
+        },
+        "tooltip": [
+            {
+                "field": "Disaster",
+                "type": "nominal"
+            },
+            {
+                "field": "Year",
+                "type": "temporal",
+                "format": "%Y"
+            },
+            {
+                "field": "Occurences",
+                "type": "quantitative"
+            }
+        ]
+    }
+}

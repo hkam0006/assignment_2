@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 350,
+  "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
     "format": {
@@ -30,6 +30,19 @@
         "tooltip": {
           "field": "note"
         }
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "oceans"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "cadetblue"
       }
     },
     {
@@ -66,11 +79,6 @@
             "co2_emission",
             "year"
           ]
-        },
-        {
-          "bin": true,
-          "field": "co2_emission",
-          "as": "binned rating"
         }
       ],
       "mark": {
@@ -80,10 +88,33 @@
       "encoding": {
         "color": {
           "field": "co2_emission",
-          "title": "CO2 Emissions per Capita (tn)",
+          "title": "CO2 Emissions per Capita (t)",
           "type": "quantitative",
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal"
+          },
           "scale": {
-            "scheme": "reds"
+            "type": "threshold",
+            "domain": [
+              5,
+              10,
+              15,
+              20,
+              25,
+              30,
+              35
+            ],
+            "range": [
+              "#ffbaba",
+              "#ff7b7b",
+              "#ff5252",
+              "#cc0000",
+              "#a70000",
+              "#660000",
+              "#4c0000",
+              "#190000"
+            ]
           }
         },
         "tooltip": [
@@ -95,7 +126,8 @@
           {
             "field": "co2_emission",
             "type": "quantitative",
-            "title": "CO2 Emissions per Capita (tn)"
+            "title": "CO2 Emissions per Capita in tons (t)",
+            "format": ".1f"
           }
         ]
       }
@@ -114,6 +146,9 @@
               "longitude"
             ]
           }
+        },
+        {
+          "filter": "datum['properties.NAME'] == 'China' || datum['properties.NAME'] == 'Brazil' || datum['properties.NAME'] == 'Australia' ||  datum['properties.NAME'] == 'Canada' ||  datum['properties.NAME'] == 'Russia' || datum['properties.NAME'] == 'India'"
         }
       ],
       "mark": {
@@ -146,6 +181,14 @@
     "style": {
       "cell": {
         "stroke": "transparent"
+      }
+    },
+    "legend": {
+      "orient": "bottom",
+      "layout": {
+        "bottom": {
+          "anchor": "middle"
+        }
       }
     }
   }

@@ -3,6 +3,7 @@
   "description": "A simple pie chart with embedded data.",
   "width": "container",
   "height": 300,
+  "title": "Total Deaths around the world",
   "data": {
     "url": "https://raw.githubusercontent.com/hkam0006/assignment_2/main/data/deaths.csv"
   },
@@ -21,8 +22,9 @@
   ],
   "selection": {
     "risk_selection": {
+      "init": "Air Pollution",
       "type": "multi",
-      "value": "Europe",
+      "value": "Air Pollution",
       "fields": [
         "Risk of Death"
       ],
@@ -61,36 +63,58 @@
     "theta": {
       "field": "Number of Deaths",
       "type": "quantitative",
-      "stack": "normalize"
+      "stack": "normalize",
+      "sort": "descending"
     },
     "color": {
       "field": "Risk of Death",
       "type": "nominal",
       "legend": {
-        "orient": "left"
+        "orient": "left",
+        "title": "Risk of Death"
+      },
+      "scale": {
+        "domain": [
+          "Air Pollution",
+          "Cardiovascular",
+          "Maternal and Child Health",
+          "Nutrition",
+          "Substance Use",
+          "Environmental"
+        ],
+        "range": [
+          "#e83a2d",
+          "#f58518",
+          "#72b7b2",
+          "#54a24b",
+          "#eeca3b",
+          "#a65628"
+        ]
       }
     },
     "opacity": {
       "condition": {
         "selection": "risk_selection",
-        "value": 0.8
+        "value": 1
       },
-      "value": 0.2
+      "value": 0.3
     },
     "tooltip": [
       {
         "field": "Risk of Death",
+        "title": "Cause of Death",
         "type": "nominal"
       },
       {
         "field": "Number of Deaths",
+        "title": "Deaths",
         "type": "quantitative",
         "format": ".0f"
       },
       {
         "field": "percentage_deaths",
         "type": "quantitative",
-        "title": "% of Total Deaths",
+        "title": "Total Deaths (%)",
         "format": ".2f"
       }
     ]
@@ -99,6 +123,13 @@
     "style": {
       "cell": {
         "stroke": "transparent"
+      }
+    },
+    "legend": {
+      "layout": {
+        "left": {
+          "anchor": "middle"
+        }
       }
     }
   }

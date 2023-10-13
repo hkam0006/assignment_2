@@ -22,15 +22,18 @@
 				{
 					"filter": {
 						"field": "Year",
-						"lte": {
-							"year": 2019
-						}
+						"timeUnit": "year",
+						"range": [
+							1850,
+							2019
+						]
 					}
 				}
 			],
 			"encoding": {
 				"y": {
 					"field": "Anomaly",
+					"title": "Temperature Difference (°C)",
 					"type": "quantitative",
 					"axis": {
 						"gridColor": {
@@ -99,7 +102,9 @@
 					}
 				}
 			],
-			"mark": "rule"
+			"mark": {
+				"type": "rule"
+			}
 		},
 		{
 			"transform": [
