@@ -5,6 +5,15 @@
   "data": {
     "url": "https://raw.githubusercontent.com/hkam0006/assignment_2/main/data/death_rate_10000_edited.csv"
   },
+  "selection": {
+    "Continent_selection": {
+      "type": "multi",
+      "fields": [
+        "Continent"
+      ],
+      "bind": "legend"
+    }
+  },
   "params": [
     {
       "name": "Year_filter",
@@ -16,50 +25,11 @@
         "step": 1,
         "name": "Year: "
       }
-    },
-    {
-      "name": "top_k_countries",
-      "value": 20,
-      "bind": {
-        "input": "range",
-        "min": 3,
-        "max": 20,
-        "step": 1,
-        "name": "No. Countries"
-      }
-    },
-    {
-      "name": "Continent_selection",
-      "bind": {
-        "input": "select",
-        "options": [
-          null,
-          "North America",
-          "South America",
-          "Europe",
-          "Africa",
-          "Asia",
-          "Oceania"
-        ],
-        "labels": [
-          "Show All",
-          "North America",
-          "South America",
-          "Europe",
-          "Africa",
-          "Asia",
-          "Oceania"
-        ],
-        "name": "Continent: "
-      }
     }
   ],
   "transform": [
     {
       "filter": "datum.Year == Year_filter"
-    },
-    {
-      "filter": "datum.Continent == Continent_selection || Continent_selection == null"
     },
     {
       "aggregate": [
@@ -90,7 +60,7 @@
       ]
     },
     {
-      "filter": "datum.rank <= top_k_countries"
+      "filter": "datum.rank <= 12"
     }
   ],
   "mark": {
@@ -116,32 +86,11 @@
       "title": "Countries"
     },
     "color": {
-      "field": "Continent",
-      "type": "nominal",
-      "scale": {
-        "domain": [
-          "North America",
-          "South America",
-          "Europe",
-          "Africa",
-          "Asia",
-          "Oceania"
-        ],
-        "range": [
-          "#21C9C5",
-          "#984ea3",
-          "#ff7f00",
-          "#a6cee3",
-          "#377eb8",
-          "#a65628"
-        ]
+      "condition": {
+        "test": "datum.Entity === 'Solomon Islands'",
+        "value": "red"
       },
-      "legend": {
-        "orient": "bottom-right",
-        "fillColor": "lightgray",
-        "padding": 10,
-        "cornerRadius": 5
-      }
+      "value": "lightgray"
     },
     "tooltip": [
       {
