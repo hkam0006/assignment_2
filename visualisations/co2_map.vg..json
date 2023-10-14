@@ -9,9 +9,27 @@
       "feature": "ne_110m_admin_0_countries"
     }
   },
-  "params": [],
+  "params": [
+    {
+      "name": "CO2_Filter",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 36,
+        "step": 0.2,
+        "name": "Minimum CO2 Emissions per Capita (t): "
+      }
+    }
+  ],
   "projection": {
-    "type": "equalEarth"
+    "type": "equalEarth",
+    "center": {
+      "expr": "CO2_Filter >= 17 ? [51.183884, 25.354826] : [0, 0]"
+    },
+    "scale": {
+      "expr": "CO2_Filter >= 17 ? 1000 : 147"
+    }
   },
   "layer": [
     {
@@ -79,6 +97,9 @@
             "co2_emission",
             "year"
           ]
+        },
+        {
+          "filter": "datum.co2_emission >= CO2_Filter"
         }
       ],
       "mark": {
@@ -148,11 +169,15 @@
           }
         },
         {
-          "filter": "datum['properties.NAME'] == 'China' || datum['properties.NAME'] == 'Brazil' || datum['properties.NAME'] == 'Australia' ||  datum['properties.NAME'] == 'Canada' ||  datum['properties.NAME'] == 'Russia' || datum['properties.NAME'] == 'India'"
+          "filter": "datum['properties.NAME'] == 'China' || datum['properties.NAME'] == 'Brazil' || datum['properties.NAME'] == 'Australia' ||  datum['properties.NAME'] == 'Canada' ||  datum['properties.NAME'] == 'Russia' || datum['properties.NAME'] == 'India' || datum['properties.NAME'] == 'Qatar' || datum['properties.NAME'] == 'Saudi Arabia' || datum['properties.NAME'] == 'Kuwait' || datum['properties.NAME'] == 'United Arab Emirates'"
         }
       ],
       "mark": {
-        "type": "text"
+        "type": "text",
+        "fontWeight": "bold",
+        "dy": {
+          "expr": "if(CO2_Filter >= 17 && datum['properties.NAME'] == 'Qatar' || datum['properties.NAME'] == 'Kuwait', -22, 0)"
+        }
       },
       "encoding": {
         "longitude": {
@@ -169,7 +194,7 @@
         },
         "opacity": {
           "condition": {
-            "test": "datum['properties.NAME'] == 'China' || datum['properties.NAME'] == 'Brazil' || datum['properties.NAME'] == 'Australia' ||  datum['properties.NAME'] == 'Canada' ||  datum['properties.NAME'] == 'Russia' || datum['properties.NAME'] == 'India'",
+            "test": " datum['properties.NAME'] == 'China' || datum['properties.NAME'] == 'Brazil' || datum['properties.NAME'] == 'Australia' ||  datum['properties.NAME'] == 'Canada' ||  datum['properties.NAME'] == 'Russia' || datum['properties.NAME'] == 'India' || CO2_Filter >= 17 && datum['properties.NAME'] == 'Qatar' || CO2_Filter >= 17 && CO2_Filter < 18.3 && datum['properties.NAME'] == 'Saudi Arabia' ||  CO2_Filter >= 17 && CO2_Filter < 22.6 && datum['properties.NAME'] == 'United Arab Emirates' ||  CO2_Filter >= 17 &&  CO2_Filter < 23.5 && datum['properties.NAME'] == 'Kuwait' ",
             "value": 1
           },
           "value": 0

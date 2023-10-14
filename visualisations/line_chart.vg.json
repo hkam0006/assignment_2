@@ -62,6 +62,15 @@
                     "Drought",
                     "Wildfire",
                     "Volcanic activity"
+                ],
+                "range": [
+                    "red",
+                    "#f58518",
+                    "black",
+                    "brown",
+                    "#4c78a8",
+                    "cyan",
+                    "purple"
                 ]
             }
         },
